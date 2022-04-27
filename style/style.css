@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Times, serif;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+nav{
+    flex: 1;
+    text-align: right;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+
+}
+nav ul li{
+    display: inline-block;
+    margin-right: 50px;
+}
+.container a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+.container a:hover{
+    color: black;
+}
+.container{
+    background-color: gray;
+
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.container h1{
+    color: whitesmoke;
+    padding-left: 25px;
+}
+h1{
+    padding: 25px;
+}
+p{
+    font-size: 30px;
+    padding: 25px;
+}
+.login {
+    margin: 100px auto;
+    width: 400px;
+    background-color: #D3D3D3;
+    padding: 60px;
+    border-radius: 50px;
+}
+.login header {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 300;
+    color: black;
+}
+form input {
+    font-size: 18px;
+    padding: 10px 20px 10px 5px;
+}
+.loginbtn {
+    width: 100%;
+    padding: 12px 10px;
+    border: none;
+    font-size: 18px;
+    border-radius: 50px;
+    background-color: gray;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+
+}
+input{
+    border: none;
+    outline: none;
+
+
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 0px;
+    margin-bottom: 30px;
+}
+.inputs{
+    outline: none;
+    border: none;
+    background: none;
+}
+
+#foodImg{
+
+    width:45%;
+}
+.column{
+    float:left;
+    width:20%;
+    padding:2px;
+}
+.row::after{
+    content:"";
+    clear:both;
+    display: table;
+}
+.fields{
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
