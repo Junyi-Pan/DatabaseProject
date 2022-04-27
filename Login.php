@@ -31,6 +31,7 @@ try
                 )
             );
             $count = $statement->rowCount();
+            
             if($count > 0)
             {
                 $_SESSION["username"] = $_POST["username"];
@@ -38,6 +39,23 @@ try
             }
             else
             {
+                $query = "SELECT * FROM admin WHERE username = :username AND password = :password";
+                $statement = $connect->prepare($query);
+                $statement->execute(
+                    array(
+                        'username'     =>     $username,
+                        'password'     =>     $hashPass
+                    )
+                );
+                $count = $statement->rowCount();
+
+            }
+            if($count > 0)
+            {
+                $_SESSION["username"] = $_POST["username"];
+                header("location:adminIndex.php");
+            }
+            else{
                 $message = '<label>Incorrect Username/Password</label>';
             }
         }
@@ -80,14 +98,13 @@ catch(PDOException $error)
     ?>
     <header>Login</header>
     <form method="post">
-        
+        <label>Username</label>
         <div class="inputs">
-            <label>Username</label>
             <input type="text" name="username" class="form-control" />
-            <br></br>
+            <br />
             <label>Password</label>
             <input type="password" name="password" class="form-control" />
-            <br></br>
+            <br />
         </div>
 
         <div class="options">
