@@ -15,25 +15,23 @@
 
 require_once('connect.php');
     if(isset($_POST['register'])){
-        if(empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["email"]) || empty($_POST["fName"]) || empty($_POST["lName"])) {
-            $message = '<label>Username, Password, Email, First Name, and Last Name are required</label>';
+        if(empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["email"])) {
+            $message = '<label>Username, Password, Email are required</label>';
         }
         else{
             $username = $_POST["username"];
             $password = $_POST["password"];
             $email = $_POST["email"];
-            $fName = $_POST["fName"];
-            $lName = $_POST["lName"];
             
             //salt password for added security
             $saltPass = "483ythgfunwejksvbsm3q".$password."7dnfr234fes";
             // makes scrambled password
             $hashPass = hash('sha512', $saltPass);
 
-            $query = "INSERT INTO user (username, password, email, firstName, lastName) VALUES(?,?,?,?,?)";
+            $query = "INSERT INTO user (username, password, email) VALUES(?,?,?)";
             $statement = $connect->prepare($query);
             // insert hashed password into table with other info
-            $statement->execute([$username,$hashPass,$email, $fName, $lName]);
+            $statement->execute([$username,$hashPass,$email]);
             $count = $statement->rowCount();
             if($count > 0)
             {
@@ -84,10 +82,6 @@ require_once('connect.php');
             <br />
             <label>Email</label>
             <input type="text" name="email" class="fields"/>
-            <label>First Name</label>
-            <input type="text" name="fName" class="fields"/>
-            <label>Last Name</label>
-            <input type="text" name="lName" class="fields"/>
 
         </div>
 

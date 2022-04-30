@@ -48,16 +48,17 @@ try
                     )
                 );
                 $count = $statement->rowCount();
-
+                if($count > 0)
+                {
+                    $_SESSION["username"] = $_POST["username"];
+                    header("location:adminIndex.php");
+                }
+                else{
+                    $message = '<label>Incorrect Username/Password</label>';
+                }
             }
-            if($count > 0)
-            {
-                $_SESSION["username"] = $_POST["username"];
-                header("location:adminIndex.php");
-            }
-            else{
-                $message = '<label>Incorrect Username/Password</label>';
-            }
+            
+            
         }
     }
 }
