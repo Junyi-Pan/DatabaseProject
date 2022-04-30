@@ -1,6 +1,26 @@
 <?php
+require_once('connect.php');
 session_start();
 $logged = isset($_SESSION["username"]);
+if(isset($_POST['addMovie'])){
+    $name = $_POST['name'];
+    $genre = $_POST['genre'];
+    $director = $_POST['director'];
+    $summary = $_POST['summary'];
+    $date = $_POST['date'];
+    $image = $_POST['image'];
+
+    $query1 = "SELECT * FROM admin WHERE Username = '".$_SESSION['username']."'";
+        $statement1 = $connect->prepare($query1);
+        $statement1->execute();
+        $admin = $statement1 -> fetch();
+        $aid = $admin['AID'];
+        $statement1->closeCursor();
+
+    $query2 = "INSERT INTO movie (Name, Genre, Director, Summary, Date, AID, Image) VALUES(?,?,?,?,?,?,?)";
+        $statement2 = $connect->prepare($query2);
+        $statement2->execute([$name, $genre, $director, $summary, $date, $aid, $image]);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +52,29 @@ $logged = isset($_SESSION["username"]);
         }
         ?>
     </div>
+</div>
+<div class="login">
+    <form method="post">
+        <div class="inputs">
+            <label>Title</label>
+            <input type="text" name="name" class="fields" required>
+            <label>Genre</label>
+            <input type="text" name="genre" class="fields" required>
+            <label>Director</label>
+            <input type="text" name="director" class="fields" required>
+            <label>Summary</label>
+            <input type="text" name="summary" class="fields" required>
+            <label>Image</label>
+            <input type="text" name="image" class="fields" required>
+            <label>Date</label>
+            <input type="date" name="date" class="fields" required>
+
+        </div>
+        <div class="loginbtn">
+            <input type="submit" name="addMovie" class="inputs" value="Add Movie" />
+        </div>
+
+    </form>
 </div>
 <?php if(!$logged || $_SESSION["username"] != "admin"){
     echo "You are not authorized to view this page";
