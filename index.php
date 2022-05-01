@@ -1,6 +1,15 @@
 <?php
 session_start();
 $logged = isset($_SESSION["username"]);
+require_once('connect.php');
+
+if(isset($_POST['movie'])){
+    $movie = $_POST['movies'];
+    $movieID = $_POST['mID'];
+    $url = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER['PHP_SELF']) . "/movie.php?movie=$movieID";
+    header("location:$url");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,19 +26,16 @@ $logged = isset($_SESSION["username"]);
             <h1>Rotten Orange Inc.</h1>
             <nav>
                 <ul>
-
                     <li><a href="index.php">Home</a></li>
                     <li><a href="menu.php">Movie Search</a></li>
                     <?php if(!$logged): ?>
-                    <li><a href="Login.php">Login</a></li>
-                    <li><a href="register.php">Register</a></li>
-
+                        <li><a href="Login.php">Login</a></li>
+                        <li><a href="register.php">Register</a></li>
                     <?php else: ?>
-                    <li><a href="editProfile.php">Edit Profile</a></li>
+                        <li><a href="editProfile.php">Edit Profile</a></li>
                     <?php endif; ?>
-
                     <?php if($logged): ?>
-                    <li><a href="logout.php">Logout</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     <?php endif; ?>
 
                 </ul>
@@ -37,7 +43,31 @@ $logged = isset($_SESSION["username"]);
         </div>
     </div>
     <h1>Popular Movies</h1>
-
+    <div class="movie">
+        <?php
+            $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image FROM movie";
+            $statement = $connect->prepare($query);
+            $statement->execute();
+            $count = $statement->rowCount();
+            for($x = 0; $x < $count; $x++){
+                $fetch = $statement->fetch();
+                $name = $fetch['Name'];
+                $mID = $fetch['MID'];
+                $genre = $fetch['Genre'];
+                $director = $fetch['Director'];
+                $summary = $fetch['Summary'];
+                $date = $fetch['Date'];
+                $image = $fetch['Image'];
+                ?>
+                <form method="post" class="moviePost">
+                    <img src="<?php echo $image;?>">
+                    <input type="submit" class="movieBtn" name="movie" value="View Movie Page">
+                    <input type="hidden" name="mID" value="<?php echo $mID;?>">
+                </form>
+                <?php
+            }
+        ?>
+    </div>
 
 </body>
 </html>

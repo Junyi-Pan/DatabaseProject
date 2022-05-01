@@ -84,14 +84,6 @@ require_once('connect.php');
             <input type="text" name="email" class="fields"/>
 
         </div>
-
-        <div class="options">
-            <div class="rememberme">
-                <input id="rememberme" type="checkbox"> <label
-                    for="rememberme">Remember me</label>
-            </div>
-
-        </div>
         <div class="loginbtn">
             <input type="submit" name="register" class="inputs" value="Register" />
         </div>

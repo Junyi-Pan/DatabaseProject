@@ -55,6 +55,7 @@ if(isset($_POST['addMovie'])){
 </div>
 <div class="login">
     <form method="post">
+        <header>Add Movie</header>
         <div class="inputs">
             <label>Title</label>
             <input type="text" name="name" class="fields" required>

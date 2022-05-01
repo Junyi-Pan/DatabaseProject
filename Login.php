@@ -57,8 +57,6 @@ try
                     $message = '<label>Incorrect Username/Password</label>';
                 }
             }
-            
-            
         }
     }
 }
@@ -109,10 +107,6 @@ catch(PDOException $error)
         </div>
 
         <div class="options">
-            <div class="rememberme">
-                <input id="rememberme" type="checkbox"> <label
-                        for="rememberme">Remember me</label>
-            </div>
             <div class="forgotpassword">
                 <a href="forgotPassword.php">Forgot Password</a>
             </div>
