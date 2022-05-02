@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: Cambria, Times, serif;
 }
+body{
+    background-color: rgb(240,240,240);
+}
 .navbar{
     display: flex;
     align-items: center;
@@ -76,13 +79,61 @@ form input {
     text-align: center;
     outline: none;
     cursor: pointer;
+}
+.movieBtn{
+    width: 210px;
+    padding: 12px 10px;
+    border: none;
+    font-size: 18px;
+    border-radius: 50px;
+    background-color: rgb(145,145,145);
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+.movie{
+    display: flex;
+}
+.moviePost{
+    align-items: center;
+    margin: 5px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
 
+.moviePage{
+    align-items: center;
+    display: flex;
+}
+.movieContainer{
+    margin: 20px;
+    width: 40%;
+}
+.movieText{
+    font-size: 20px;
+}
+.movieText h3{
+    margin-top: 25px;
+}
+.reviewContainer{
+    margin-left: 300px;
+    width: 40%;
+}
+.review{
+    margin-left: 25px;
+    font-size: 18px;
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.moviePageContainer{
+    display: flex;
 }
 input{
     border: none;
     outline: none;
-
-
 }
 .options {
     display: flex;
@@ -98,7 +149,6 @@ input{
 }
 
 #foodImg{
-
     width:45%;
 }
 .column{
@@ -114,5 +164,23 @@ input{
 .fields{
     margin-bottom: 20px;
     margin-top: 5px;
+}
+.reviewBox input, select{
+    margin-left: 25px;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    resize: both;
+    overflow: auto;
+    border-style: none;
+    margin-bottom: 15px;
+}
+.reviewBtn{
+    margin-left: 25px;
+    margin-bottom: 50px;
+}
+.rating{
+    margin-left: 25px;
+
 }
 
