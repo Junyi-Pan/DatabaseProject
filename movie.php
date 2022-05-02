@@ -35,8 +35,6 @@ if($logged){
                     <?php if(!$logged): ?>
                         <li><a href="Login.php">Login</a></li>
                         <li><a href="register.php">Register</a></li>
-                    <?php else: ?>
-                        <li><a href="editProfile.php">Edit Profile</a></li>
                     <?php endif; ?>
                     <?php if($logged): ?>
                         <li><a href="logout.php">Logout</a></li>
@@ -72,10 +70,14 @@ if($logged){
             if(!empty($_POST['review']) && isset($_POST['rating'])){
                 $reviewText = $_POST['review'];
                 $reviewRating = $_POST['rating'];
+                $url = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER['PHP_SELF']) . "/movie.php?movie=$mID";
+                unset($_POST['review']);
+                unset($_POST['rating']);
                 $query = "INSERT INTO review(Text, UID, MID, Rating) VALUES(?,?,?,?)";
                 $statement = $connect->prepare($query);
                 $statement->execute([$reviewText, $uID, $mID, $reviewRating]);
-                unset($_POST['review']);
+                header("location:$url");
+
             }
 
         }

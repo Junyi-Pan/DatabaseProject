@@ -31,8 +31,6 @@ if(isset($_POST['movie'])){
                     <?php if(!$logged): ?>
                         <li><a href="Login.php">Login</a></li>
                         <li><a href="register.php">Register</a></li>
-                    <?php else: ?>
-                        <li><a href="editProfile.php">Edit Profile</a></li>
                     <?php endif; ?>
                     <?php if($logged): ?>
                         <li><a href="logout.php">Logout</a></li>
