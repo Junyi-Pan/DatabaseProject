@@ -69,7 +69,7 @@ if($logged){
         $movieRating = $fetch['Rating'];
 
         if(isset($_POST['reviewBtn'])){
-            if(!empty($_POST['review'])){
+            if(!empty($_POST['review']) && isset($_POST['rating'])){
                 $reviewText = $_POST['review'];
                 $reviewRating = $_POST['rating'];
                 $query = "INSERT INTO review(Text, UID, MID, Rating) VALUES(?,?,?,?)";
