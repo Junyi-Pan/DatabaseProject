@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 29, 2022 at 01:10 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.22
+-- Host: 127.0.0.1
+-- Generation Time: May 02, 2022 at 12:47 AM
+-- Server version: 8.0.28
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `AID` int(11) NOT NULL,
+  `AID` int NOT NULL,
   `Username` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -47,13 +47,13 @@ INSERT INTO `admin` (`AID`, `Username`, `Password`) VALUES
 --
 
 CREATE TABLE `movie` (
-  `MID` int(11) NOT NULL,
+  `MID` int NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Genre` varchar(255) NOT NULL,
   `Director` varchar(255) NOT NULL,
   `Summary` varchar(1000) NOT NULL,
   `Date` date NOT NULL,
-  `AID` int(11) NOT NULL,
+  `AID` int NOT NULL,
   `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,7 +77,7 @@ INSERT INTO `movie` (`MID`, `Name`, `Genre`, `Director`, `Summary`, `Date`, `AID
 --
 
 CREATE TABLE `resetpassword` (
-  `rpid` int(11) NOT NULL,
+  `rpid` int NOT NULL,
   `code` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -89,11 +89,20 @@ CREATE TABLE `resetpassword` (
 --
 
 CREATE TABLE `review` (
-  `RID` int(11) NOT NULL,
-  `Text` varchar(255) NOT NULL,
-  `UID` int(11) NOT NULL,
-  `MID` int(11) NOT NULL
+  `RID` int NOT NULL,
+  `Text` varchar(2000) NOT NULL,
+  `UID` int NOT NULL,
+  `MID` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`RID`, `Text`, `UID`, `MID`) VALUES
+(1, 'August Wilson’s play Fences premiered on Broadway in 1987 to critical and audience acclaim that’s lasted for almost thirty years. Denzel Washington revived it in 2010. Now, six years later, he’s taken Wilson’s play and turned it into his third feature as director. Already a timely look at the African-American experience in the 80’s, Fences is one of the most prescient movies out now. Powerhouse performances from Washington and (hopefully Academy Award-winner) Viola Davis make this an honest and heartwrenching adaptation of an American masterpiece.\n\nTroy Maxson (Washington) has spent seventeen years of his life working as a garbageman and raising a family. But personal disputes and regrets can’t remain hidden forever, causing Troy to question the nature of his life.\n\nWilson’s play is adapted almost verbatim. It’s packed to bursting with themes on individual identity, the roles of family with regards to gender, and how we mitigate our own dreams for that of a greater good. The Maxsons’ lives are average, not just to the African-American experience of the 1950’s, but to nearly every lower middle-class person today. They don’t have stacks of money, but they’re as content as they’re going to get.', 1, 1),
+(2, 'test', 1, 1),
+(3, 'test', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +111,7 @@ CREATE TABLE `review` (
 --
 
 CREATE TABLE `user` (
-  `uID` int(11) NOT NULL,
+  `uID` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
@@ -160,31 +169,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `AID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `MID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `MID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `resetpassword`
 --
 ALTER TABLE `resetpassword`
-  MODIFY `rpid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rpid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `RID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
