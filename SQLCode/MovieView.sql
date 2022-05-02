@@ -1,2 +1,1 @@
-CREATE VIEW [Movie View] AS
-SELECT * FROM Movie
+CREATE VIEW MovieView AS SELECT * FROM movie;
