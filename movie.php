@@ -48,7 +48,7 @@ if($logged){
     </div>
     <?php
         $mID = $_GET['movie'];
-        $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image FROM movie WHERE MID = :mid";
+        $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image, Rating FROM movie WHERE MID = :mid";
         $statement = $connect->prepare($query);
         $statement->execute(
             array(
@@ -66,13 +66,15 @@ if($logged){
         $date = $fetch['Date'];
         $image = $fetch['Image'];
         $name = $fetch['Name'];
+        $movieRating = $fetch['Rating'];
 
         if(isset($_POST['reviewBtn'])){
             if(!empty($_POST['review'])){
                 $reviewText = $_POST['review'];
-                $query = "INSERT INTO review(Text, UID, MID) VALUES(?,?,?)";
+                $reviewRating = $_POST['rating'];
+                $query = "INSERT INTO review(Text, UID, MID, Rating) VALUES(?,?,?,?)";
                 $statement = $connect->prepare($query);
-                $statement->execute([$reviewText, $uID, $mID]);
+                $statement->execute([$reviewText, $uID, $mID, $reviewRating]);
                 unset($_POST['review']);
             }
 
@@ -82,7 +84,12 @@ if($logged){
         <div class="movieContainer">
             <div class="moviePage">
                 <img src="<?php echo $image;?>">
-                <h1><?php echo $name;?></h1>
+                <div>
+                    <h1><?php echo $name;?></h1>
+                    <div class="rating">
+                        <h2>Rating: <?php echo $movieRating?>/5</h2>
+                    </div>
+                </div>
             </div>
             <div class="movieText">
                 <h3>Director: </h3>
@@ -97,10 +104,18 @@ if($logged){
         </div>
         <div class="reviewContainer">
             <h1>Reviews</h1>
-
             <?php if($logged):?>
-
             <form method="post">
+                <div class="reviewBox">
+                    <select name="rating" id="rating">
+                        <option selected disabled hidden>Rating</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
                 <div class="reviewBox">
                     <input type="text" name="review" placeholder="Write a review here!">
                 </div>
@@ -143,9 +158,5 @@ if($logged){
             ?>
         </div>
     </div>
-
-
-
-
 </body>
 </html>

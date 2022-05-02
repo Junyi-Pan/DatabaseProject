@@ -58,14 +58,49 @@ if(isset($_POST['movie'])){
                 $summary = $fetch['Summary'];
                 $date = $fetch['Date'];
                 $image = $fetch['Image'];
+                if($x < 7):
                 ?>
-                <form method="post" class="moviePost">
-                    <img src="<?php echo $image;?>">
-                    <input type="submit" class="movieBtn" name="movie" value="View Movie Page">
-                    <input type="hidden" name="mID" value="<?php echo $mID;?>">
-                </form>
-                <?php
+                <div class="moviePost">
+                    <form method="post">
+                        <img src="<?php echo $image;?>">
+                        <br>
+                        <input type="submit" class="movieBtn" name="movie" value="View Movie Page">
+                        <input type="hidden" name="mID" value="<?php echo $mID;?>">
+                    </form>
+                </div>
+                <?php endif;
+
             }
+        ?>
+    </div>
+    <h1>Featured Movies</h1>
+    <div class="movie">
+        <?php
+        $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image FROM movie";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        $count = $statement->rowCount();
+        for($x = 0; $x < $count; $x++){
+            $fetch = $statement->fetch();
+            $name = $fetch['Name'];
+            $mID = $fetch['MID'];
+            $genre = $fetch['Genre'];
+            $director = $fetch['Director'];
+            $summary = $fetch['Summary'];
+            $date = $fetch['Date'];
+            $image = $fetch['Image'];
+            if($x > $count -8):
+                ?>
+                <div class="moviePost">
+                    <form method="post">
+                        <img src="<?php echo $image;?>">
+                        <br>
+                        <input type="submit" class="movieBtn" name="movie" value="View Movie Page">
+                        <input type="hidden" name="mID" value="<?php echo $mID;?>">
+                    </form>
+                </div>
+        <?php endif;
+        }
         ?>
     </div>
 
