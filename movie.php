@@ -31,7 +31,7 @@ if($logged){
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="menu.php">Movie Search</a></li>
+                    <li><a href="movieSearch.php">Movie Search</a></li>
                     <?php if(!$logged): ?>
                         <li><a href="Login.php">Login</a></li>
                         <li><a href="register.php">Register</a></li>

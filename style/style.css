@@ -34,7 +34,7 @@ nav ul li{
     color: black;
 }
 .container{
-    background-color: gray;
+    background-color: darkorange;
 
     margin: auto;
     padding-left: 25px;
@@ -55,7 +55,7 @@ p{
 .login {
     margin: 100px auto;
     width: 400px;
-    background-color: #D3D3D3;
+    background-color: lightsalmon;
     padding: 60px;
     border-radius: 50px;
 }
@@ -75,7 +75,7 @@ form input {
     border: none;
     font-size: 18px;
     border-radius: 50px;
-    background-color: gray;
+    background-color: orangered;
     text-align: center;
     outline: none;
     cursor: pointer;
@@ -86,7 +86,7 @@ form input {
     border: none;
     font-size: 18px;
     border-radius: 50px;
-    background-color: rgb(145,145,145);
+    background-color: lightsalmon;
     text-align: center;
     outline: none;
     cursor: pointer;
@@ -182,5 +182,23 @@ input{
 .rating{
     margin-left: 25px;
 
+}
+.movieSearch{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 200px;
+}
+.searchText{
+    border-radius: 10px;
+    width: 1000px;
+}
+.searchBtn{
+    background-color: lightsalmon;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
 }
 

@@ -27,7 +27,7 @@ if(isset($_POST['movie'])){
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="menu.php">Movie Search</a></li>
+                    <li><a href="movieSearch.php">Movie Search</a></li>
                     <?php if(!$logged): ?>
                         <li><a href="Login.php">Login</a></li>
                         <li><a href="register.php">Register</a></li>
@@ -43,18 +43,13 @@ if(isset($_POST['movie'])){
     <h1>Popular Movies</h1>
     <div class="movie">
         <?php
-            $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image FROM movie";
+            $query = "SELECT MID, Image FROM movie";
             $statement = $connect->prepare($query);
             $statement->execute();
             $count = $statement->rowCount();
             for($x = 0; $x < $count; $x++){
                 $fetch = $statement->fetch();
-                $name = $fetch['Name'];
                 $mID = $fetch['MID'];
-                $genre = $fetch['Genre'];
-                $director = $fetch['Director'];
-                $summary = $fetch['Summary'];
-                $date = $fetch['Date'];
                 $image = $fetch['Image'];
                 if($x < 7):
                 ?>
@@ -74,18 +69,13 @@ if(isset($_POST['movie'])){
     <h1>Featured Movies</h1>
     <div class="movie">
         <?php
-        $query = "SELECT MID, Name, Genre, Director, Summary, Date, Image FROM movie";
+        $query = "SELECT MID, Image FROM movie";
         $statement = $connect->prepare($query);
         $statement->execute();
         $count = $statement->rowCount();
         for($x = 0; $x < $count; $x++){
             $fetch = $statement->fetch();
-            $name = $fetch['Name'];
             $mID = $fetch['MID'];
-            $genre = $fetch['Genre'];
-            $director = $fetch['Director'];
-            $summary = $fetch['Summary'];
-            $date = $fetch['Date'];
             $image = $fetch['Image'];
             if($x > $count -8):
                 ?>
