@@ -40,6 +40,7 @@ if(isset($_POST['movie'])){
 </div>
 <div class="movieSearch">
     <form method="post">
+        <h1>Movie Search</h1>
         <input type="text" name="searchInfo" class="searchText" placeholder="Enter title, director, or genre">
         <input type="submit" name="search" value="Search" class="searchBtn">
     </form>
